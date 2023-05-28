@@ -8,6 +8,9 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -38,7 +41,7 @@ public class BurgerTest {
 
     @Test
     public void testRemoveIngredient() {
-        burger.addIngredient(ingredient);
+        burger.ingredients.add(ingredient);
         burger.removeIngredient(0);
         assertEquals(0, burger.ingredients.size());
     }
@@ -48,9 +51,7 @@ public class BurgerTest {
         Ingredient ingredient1 = mock(Ingredient.class);
         Ingredient ingredient2 = mock(Ingredient.class);
         Ingredient ingredient3 = mock(Ingredient.class);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+        burger.ingredients = new ArrayList<>(Arrays.asList(ingredient1, ingredient2, ingredient3));
         burger.moveIngredient(0, 2);
         assertEquals(ingredient2, burger.ingredients.get(0));
         assertEquals(ingredient3, burger.ingredients.get(1));
@@ -61,8 +62,7 @@ public class BurgerTest {
     public void testGetPrice() {
         when(bun.getPrice()).thenReturn(2.0f);
         when(ingredient.getPrice()).thenReturn(1.0f);
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient);
+        burger.ingredients = new ArrayList<>(Arrays.asList(ingredient, ingredient));
         assertEquals(6.0f, burger.getPrice(), 0.0f);
     }
 
@@ -73,8 +73,7 @@ public class BurgerTest {
         when(ingredient.getName()).thenReturn("Cheese");
         when(bun.getPrice()).thenReturn(2.0f);
         when(ingredient.getPrice()).thenReturn(1.0f);
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient);
+        burger.ingredients = new ArrayList<>(Arrays.asList(ingredient, ingredient));
         String expectedReceipt = "(==== Corn bun ====)\n" +
                 "= filling Cheese =\n" +
                 "= filling Cheese =\n" +
