@@ -12,15 +12,18 @@ public class DatabaseTest {
     @Spy
     private Database database = new Database();
 
+    int expectedBunsInDatabase = 3;
+    int expectedIngredientsInDatabase = 6;
+
     @Test
     public void testAvailableBuns() {
         List<Bun> buns = database.availableBuns();
-        assertEquals(3, buns.size());
+        assertEquals(expectedBunsInDatabase, buns.size());
     }
 
     @Test
     public void testAvailableIngredients() {
         List<Ingredient> ingredients = database.availableIngredients();
-        assertEquals(6, ingredients.size());
+        assertEquals(expectedIngredientsInDatabase, ingredients.size());
     }
 }

@@ -4,15 +4,18 @@ import praktikum.Bun;
 import static org.junit.Assert.assertEquals;
 
 public class BunTest {
-    Bun someBun = new Bun("corn", 2.0f);
+
+    float bunPrice = 2.0f;
+    String bunName = "corn";
+    Bun someBun = new Bun(bunName, bunPrice);
 
     @Test
     public void testRealBunPrice() {
-        assertEquals(2.0f, someBun.getPrice(), 0.000f);
+        assertEquals(bunPrice, someBun.getPrice(), 0.000f);
     }
 
     @Test
     public void testRealBunName() {
-        assertEquals("corn", someBun.getName());
+        assertEquals(bunName, someBun.getName());
     }
 }

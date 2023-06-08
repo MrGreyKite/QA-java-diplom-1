@@ -23,7 +23,7 @@ public class IngredientTypeTest {
     public float price;
 
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Создание заказа с разными видами ингредиентов. Тип ингредиента - {0}, имя - {1}, цена - {2}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {IngredientType.SAUCE, "test sauce", 1.0f},
